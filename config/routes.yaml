@@ -1,3 +1,7 @@
 home:
     path: /
     controller: App\Controller\HomeController::index
+
+offers:
+    path: /offres
+    controller: App\Controller\OffersController::index
