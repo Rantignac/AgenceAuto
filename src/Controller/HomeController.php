@@ -3,15 +3,19 @@
 namespace App\Controller;
 
 
+use App\Repository\OfferRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
 
-    public function index()
+    public function index(OfferRepository $repository)
     {
 
-        return $this->render('pages/home.html.twig');
+        $offers = $repository->findLastest();
+        return $this->render('pages/home.html.twig', [
+            'offers' => $offers
+        ]);
 
     }
 

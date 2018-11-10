@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+{% block title offer.title %}
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+
+                </div>
+                <div class="col-md-4">
+                    <h1>{{ offer.title }}</h1>
+                    <h2>{{ offer.miles }} km</h2>
+                    <div class="text-primary" style="font-size: 4rem; font-weight: bold; ;">{{ offer.formattedPrice }} €
+                    </div>
+                    <a href="#" class="btn btn-primary">Contacter</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4">
+
+
+        <p>{{ offer.description | nl2br }}</p>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Caractéristiques</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            Couleur
+                        </td>
+                        <td>
+                            {{ offer.color }}
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

@@ -11,5 +11,27 @@
             </p>
         </div>
     </div>
+    <div class="container">
+        <h2>les dernières offres</h2>
+        <div class="row flex">
+            {% for offer in offers %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{{ path('offer_show',{id: offer.id ,slug: offer.slug}) }}">{{ offer.title }}</a>
+                            </h5>
+                            <p class="card-text">
+                                {{ offer.city }} ({{ offer.postalCode }})
+                            </p>
+                            <div class="text-primary"
+                                 style="font-weight: bold; font-size: 2rem;">{{ offer.formattedPrice }} €
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

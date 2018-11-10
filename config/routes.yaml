@@ -4,4 +4,13 @@ home:
 
 offers:
     path: /offres
-    controller: App\Controller\OffersController::index
+    controller: App\Controller\OfferController::index
+
+
+offer_show:
+    path: /offres/{slug}-{id}
+    controller: App\Controller\OfferController::show
+    requirements:
+        slug: ([a-z0-9\-]*)
+
+
