@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+{% block title 'Gérer les annonces ' %}
+{% block body %}
+
+    <div class="container mt-4">
+        <h2>Editer l'annonce</h2>
+        {{ include('admin/offer/_form.html.twig', {form: form, Button: 'Editer'}) }}
+    </div>
+
+
+{% endblock %}

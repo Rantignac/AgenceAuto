@@ -13,4 +13,20 @@ offer_show:
     requirements:
         slug: ([a-z0-9\-]*)
 
+admin:
+    path: /admin
+    controller: App\Controller\Admin\AdminOfferController::index
 
+admin_offer_edit:
+    path: /admin/offer/{id}
+    controller: App\Controller\Admin\AdminOfferController::edit
+    methods: [GET,POST]
+
+admin_offer_new:
+    path: /admin/create
+    controller: App\Controller\Admin\AdminOfferController::new
+
+admin_offer_delete:
+    path: /admin/offer/{id}
+    controller: App\Controller\Admin\AdminOfferController::delete
+    methods: [DELETE]
