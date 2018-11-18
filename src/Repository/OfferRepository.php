@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Offer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
@@ -21,13 +22,12 @@ class OfferRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Offer[]
+     * @return Query
      */
-    public function findAllVisible(): array
+    public function findAllVisibleQuery(): Query
     {
         return $this->FindVisibleQuery()
-            ->getQuery()
-            ->getResult();
+            ->getQuery();
     }
 
     /**
