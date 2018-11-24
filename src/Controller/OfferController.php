@@ -4,6 +4,8 @@ namespace App\Controller;
 
 
 use App\Entity\Offer;
+use App\Entity\OfferSearch;
+use App\Form\OfferSearchType;
 use App\Repository\OfferRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Knp\Component\Pager\PaginatorInterface;
@@ -37,14 +39,20 @@ class OfferController extends AbstractController
     public function index(PaginatorInterface $paginator, Request $request): Response
     {
 
+        $search = new OfferSearch();
+
+        $form = $this->createForm(OfferSearchType::class, $search);
+        $form->handleRequest($request);
+
         $offers = $paginator->paginate(
-            $this->repository->findAllVisibleQuery(),
+            $this->repository->findAllVisibleQuery($search),
             $request->query->getInt('page', 1),
             12);
 
         return $this->render('offer/index.html.twig', [
             'current_menu' => 'offers',
-            'offers' => $offers
+            'offers' => $offers,
+            'form' => $form->createView()
         ]);
     }
 

@@ -2,6 +2,21 @@
 {% block title 'Toutes nos offres' %}
 {% block body %}
 
+    <div class="jumbotron">
+        <div class="container">
+            {{ form_start(form) }}
+            <div class="form-row">
+                <div class="col">
+                    {{ form_row(form.maxPrice) }}
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary">Rechercher</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
     <div class="container mt-4">
         <h1> Voir toutes nos offres </h1>
 

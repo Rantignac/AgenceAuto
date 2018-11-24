@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Offer;
+use App\Entity\OfferSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\QueryBuilder;
@@ -24,10 +25,16 @@ class OfferRepository extends ServiceEntityRepository
     /**
      * @return Query
      */
-    public function findAllVisibleQuery(): Query
+    public function findAllVisibleQuery(OfferSearch $search): Query
     {
-        return $this->FindVisibleQuery()
-            ->getQuery();
+        $query = $this->FindVisibleQuery();
+        if ($search->getMaxPrice()) {
+            $query = $query
+                ->where('o.price <= :maxprice')
+                ->setParameter('maxprice', $search->getMaxPrice());
+        }
+
+        return $query->getQuery();
     }
 
     /**
